@@ -1,6 +1,6 @@
 define({
     everlive:{
-        apiKey: 'KfsNMBbb2oDXFRT2'
+        apiKey: 'KfsNMBbb2oDXFRT2',
         scheme: 'http'
     } 
 });
