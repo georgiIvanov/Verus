@@ -1,14 +1,16 @@
-<div data-role="view" data-id="main" data-init="app.tabStrip.events.init">
-    <div data-role="header">
+<div data-role="layout" data-id="mobile-tabstrip">
+    <header data-role="header">
         <div data-role="navbar">
-            <span data-role="view-title"></span>
+            <!--<a class="nav-button" data-align="left" data-role="backbutton">Back</a>-->
+            <span data-role="view-title">!!!</span>
+            <a data-align="right" data-role="button" class="nav-button" href="#/">Index</a>
         </div>
-    </div>
-    <!-- application views will be rendered here -->
+    </header>
+    <p>TabStrip</p>
     <div data-role="footer">
-        <div data-role="tabstrip" data-select="app.tabStrip.events.select">
-            <a data-icon="mostviewed">Stories</a> 
-            <a data-icon="add ">New</a>
+        <div data-role="tabstrip">
+            <a href="#tabstrip-stories" data-icon="mostviewed">Stories</a> 
+            <a data-icon="add">New</a>
             <a data-icon="settings">Settings</a>
         </div>
     </div>
