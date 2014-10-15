@@ -3,14 +3,14 @@
   "ProjectGuid": "d4aafe7e-256f-4325-ab80-351cc6fd3f84",
   "projectVersion": 1,
   "AppIdentifier": "com.telerik.VerusApp",
-  "DisplayName": "Verus App",
+  "DisplayName": "Verus",
   "Author": "",
-  "Description": "",
+  "Description": "Verus App",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
     "1",
-	"2"
+    "2"
   ],
   "iOSBackgroundMode": [],
   "WP8TileTitle": "",
