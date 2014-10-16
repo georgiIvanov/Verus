@@ -2,8 +2,10 @@ define([
     'views/view',
     'text!views/tabStrip/tabStrip.html',
     'app',
-    'views/stories/stories'
-], function (View, html, app, stories) {
+    'views/stories/stories',
+    'views/newStory/newStory',
+    'views/settings/settings'
+], function (View, html, app, stories, newStories, settings) {
 
     var tabSection = 'stories';
     
