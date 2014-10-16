@@ -1,9 +1,8 @@
 define([
     'views/view',
-    'text!views/stories/stories.html',
-    'app',
-    'views/inStory/inStory'
-], function (View, html, app, inStory) {
+    'text!views/inStory/inStory.html',
+    'app'
+], function (View, html, app) {
     
     var fetched = {};
     var fetchMaybe = function (type, cb) {
@@ -16,10 +15,10 @@ define([
     };
     
     var model = kendo.observable({
-        stories: app.data.stories,
-        enterStory: function (e) {
+        photos: app.data.photos,
+        photoClick: function (e) {
             var story = e.data;
-            app.instance.navigate('tabstrip-inStory?id=' + story.Id); 
+            
         }
     });
 
@@ -28,16 +27,13 @@ define([
             navbar = e.view.header.find('.km-navbar').data('kendoMobileNavBar');
         },
         show: function (e) {
-            this.loader.show();
+            //this.loader.show();
         },
         afterShow: function (e) {
             var self = this;
-            fetchMaybe("stories", function () {
-                self.loader.hide();
-                    
-            });
+            
         }
     };
     
-    return new View('stories', html, model, events);
+    return new View('inStory', html, model, events);
 });
