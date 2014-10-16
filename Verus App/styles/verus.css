@@ -1,0 +1,12 @@
+.story-image{
+    margin-left: 70px;
+    margin-right: auto;
+    width: 50%
+}
+
+.story-name{
+    text-align: center;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300; 
+    font-size:20px;
+}

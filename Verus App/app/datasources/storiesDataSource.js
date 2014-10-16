@@ -13,6 +13,10 @@ define([], function () {
                     field: 'CreatedAt',
                     defaultValue: new Date()
                 },
+                topImageUrl:{
+                    field: 'TopImageUrl',
+                    defaultValue: null
+                },
                 userId: {
                     field: 'UserId',
                     defaultValue: null
@@ -41,5 +45,7 @@ define([], function () {
             });
             ds.sync();
         });
+        
+        return ds;
     }
 });

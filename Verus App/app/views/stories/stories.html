@@ -1,15 +1,19 @@
-<div data-role="view" id="tabstrip-stories" data-title="Stories" data-layout="mobile-tabstrip">
-    <ul data-role="listview" data-style="inset" data-type="group">
-        <li>
-            Sales Representatives
-            <ul>
-                <li data-icon="toprated">1. Andrew Fuller</li>
-                <li data-icon="toprated">2. Janet Leverling</li>
-                <li data-icon="toprated" style="background-color: Green; color: #fff;">3. Carine Callahan</li>
-                <li data-icon="toprated">4. Margaret Johnson</li>
-                <li data-icon="toprated">5. Steve Collins</li>
-                <li data-icon="toprated">6. Maria Steward</li>
-            </ul>
-        </li>
+<div data-role="view" id="tabstrip-stories" 
+     data-model="app.stories.model" data-show="app.stories.events.show"
+     data-init="app.stories.events.init" data-after-show="app.stories.events.afterShow" 
+     data-title="Stories" data-layout="mobile-tabstrip">
+    
+    <ul data-role="listview" data-style="inset"
+        data-bind="source: stories" data-template="stories-template">
+       
     </ul>
 </div>
+
+<script type="text/x-kendo-template" id="stories-template">
+  
+  <a class="fa fa-lg" data-bind="click: enterStory">
+  <div class="story-name"><p>#: name #</p></div>
+  <img class="story-image" src=#:topImageUrl#></img>
+  
+  </a>
+</script>
