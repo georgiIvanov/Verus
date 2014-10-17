@@ -1,4 +1,6 @@
-define([], function () {
+define([
+'datasources/storiesDataSource'
+], function (StoriesDataSource) {
 
     return function (sort, filter) {
 
