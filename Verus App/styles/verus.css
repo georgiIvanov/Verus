@@ -1,7 +1,17 @@
 .story-image{
     margin-left: 70px;
     margin-right: auto;
-    width: 50%
+    width: 50%;
+}
+
+.photo-image{
+    max-width: 320px;
+}
+
+.center-children
+{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .story-name{
@@ -9,4 +19,37 @@
     font-family: "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 300; 
     font-size:20px;
+}
+
+.label-text{
+    text-align: center;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300; 
+    font-size:30px;
+}
+
+.label-small-margin{
+    margin: 5px;
+    padding: 10px;
+}
+
+.text-input{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:20px;
+    max-width:280px;
+}
+
+#newStoryPhotoButton{
+    font-size: 4.2em;
+    
+}
+
+// margins
+
+.small-top-margin{
+    margin-top:20px;
+}
+
+.big-top-margin{
+    margin-top:150px;
 }

@@ -1,5 +1,16 @@
-<div data-role="view" id="tabstrip-new" data-title="New" data-layout="mobile-tabstrip">
-    <ul data-role="listview" data-style="inset" data-type="group">
-        New story here
-    </ul>
+<div data-role="view" id="tabstrip-new" data-title="New Story"
+     data-layout="mobile-tabstrip" class="center-children"
+     data-model="app.newStory.model" data-after-show="app.newStory.events.afterShow"
+     data-init="app.newStory.events.init">
+    <div class="center-children">
+        <p class="label-text label-small-margin small-top-margin">
+            Title
+        </p>
+        <input type="text" value="" class="text-input center-children" style="margin-left: 50px" id="newStoryTitle" />
+        <span data-role="button" class="center-children big-top-margin" 
+              data-icon="camera" id="newStoryPhotoButton" data-bind="click:addImage" ></span>
+        <div id="newStoryPicture">
+            
+        </div>
+    </div>
 </div>
