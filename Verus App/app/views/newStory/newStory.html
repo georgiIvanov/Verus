@@ -1,7 +1,16 @@
 <div data-role="view" id="tabstrip-new" data-title="New Story"
      data-layout="mobile-tabstrip" class="center-children"
+     data-init="app.newStory.events.init"
      data-model="app.newStory.model" data-after-show="app.newStory.events.afterShow"
      data-init="app.newStory.events.init">
+    
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title">!!!</span>
+            <a data-align="right" data-role="button" class="nav-button" data-bind="click:createButtonTap">Create</a>
+        </div>
+    </header>
+    
     <div class="center-children">
         <p class="label-text label-small-margin small-top-margin">
             Title

@@ -4,12 +4,14 @@ define([
     'app',
     'buisnessLogic/imageOperations'
 ], function (View, html, app, imageOperations) {
-    
-    var tookPicture = false;
-    
+
+    var imageData = null;
+    var self = null;
+
     var events = {
         init: function (e) {
-
+            self = this;
+            $('#newStoryTitle').val("test story");
         },
         afterShow: function (e) {
             var self = this;
@@ -20,18 +22,12 @@ define([
 
     var model = kendo.observable({
         addImage: function (e) {
-            if(tookPicture == true)
-            {
-                return;
-            }
-            var story = e.data;
-
+            
             var success = function (data) {
-                var imageElement = '<img src="data:image/jpg;charset=utf-8;base64,' + data + 
-                    '" class="photo-image"/>';
-                var tab = $('#newStoryPicture');
-                tab.append(imageElement);
-                tookPicture = true;
+                var imageElement = '<img src="data:image/jpg;charset=utf-8;base64,' + data +
+                    '" class="photo-image" id="newStoryPicture"/>';
+                $('#newStoryPicture').replaceWith(imageElement);
+                imageData = data;
             };
 
             var error = function () {
@@ -43,6 +39,18 @@ define([
             }
 
             navigator.camera.getPicture(success, error, config)
+        },
+        createButtonTap: function (e) {
+            var storyTitle = $('#newStoryTitle').val();
+            if(storyTitle != "" && imageData){
+                self.loader.show();
+                imageOperations.createStory(imageData, storyTitle, function(success){
+                    self.loader.hide();
+                    $('#newStoryPicture').replaceWith('<img src="" class="photo-image" id="newStoryPicture"/>');
+                    $('#newStoryTitle').val("waas");
+                    imageData = null;
+                });
+            }
         }
     });
 
