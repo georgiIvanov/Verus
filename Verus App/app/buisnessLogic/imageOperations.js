@@ -30,7 +30,12 @@ define([
             stories.add(newStory);
             stories.one('sync', function () {
                 $.publish('/newStory/added', [newStory]);
-                self.uploadPhoto(imageData, function(){
+                self.uploadUpdatingFile(imageData, function(uploadedFile){
+                    
+                    var createdStory = stories.at(stories._total - 1);
+                    createdStory.set('updatedPictureFile', uploadedFile.Id);
+                    createdStory.set('topImageUrl', uploadedFile.Uri);
+                    stories.sync();
                     cb(true);
                 });
                  
@@ -39,14 +44,13 @@ define([
 
            
         },
-        uploadPhoto: function(data, cb){
+        uploadUpdatingFile: function(data, cb){
             app.bes.Files.create({
                         Filename: Math.random().toString(36).substring(2, 15) + ".jpg",
                         ContentType: "image/jpeg",
                         base64: data
             }).then(function(data){
-                var a = data;
-                cb();
+                cb(data.result);
             });
             
             

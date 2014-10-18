@@ -6,7 +6,7 @@ define([
 
         var storyModel = {
             id: 'Id',
-            fields:{
+            fields: {
                 name: {
                     field: 'Name',
                     defaultValue: null
@@ -15,8 +15,12 @@ define([
                     field: 'CreatedAt',
                     defaultValue: new Date()
                 },
-                topImageUrl:{
+                topImageUrl: {
                     field: 'TopImageUrl',
+                    defaultValue: null
+                },
+                updatedPictureFile: {
+                    field: 'UpdatedPictureFile',
                     defaultValue: null
                 },
                 userId: {
@@ -25,30 +29,26 @@ define([
                 }
             }
         };
-        
+
         var ds = new kendo.data.DataSource({
-            type:'everlive',
+            type: 'everlive',
             schema: {
-                model: storyModel  
+                model: storyModel
             },
-            transport:{
+            transport: {
                 typeName: 'Stories'
             },
             serverSorting: true,
-            sort: sort || { field: 'CreatedAt', dir: 'desc' },
-            filter: filter || {}
+            sort: sort || {
+                field: 'CreatedAt',
+                dir: 'desc'
+            },
+            filter: filter || {},
+            change: function (e) {
+               
+            }
         });
-        
-        $.subscribe('/newStory/add', function (e, text) {
-            var story = ds.add({
-                name: text
-            });
-            ds.one('sync', function () {
-                $.publish('/newStory/added', [cat]);
-            });
-            ds.sync();
-        });
-        
+
         return ds;
     }
 });
