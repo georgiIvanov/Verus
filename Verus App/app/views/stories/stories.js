@@ -20,6 +20,7 @@ define([
         stories: app.data.stories,
         enterStory: function (e) {
             var story = e.data;
+            $.publish('/story/selected', [story]);
             app.instance.navigate('tabstrip-inStory?id=' + story.Id); 
         }
     });

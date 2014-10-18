@@ -1,6 +1,5 @@
 define([
-'datasources/storiesDataSource'
-], function (StoriesDataSource) {
+], function () {
 
     return function (sort, filter) {
 

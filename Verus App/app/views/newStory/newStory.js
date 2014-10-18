@@ -11,7 +11,7 @@ define([
     var events = {
         init: function (e) {
             self = this;
-            $('#newStoryTitle').val("test story");
+            //$('#newStoryTitle').val("test story");
         },
         afterShow: function (e) {
 
