@@ -18,8 +18,8 @@ define([
                     field: 'TopImageUrl',
                     defaultValue: null
                 },
-                updatedPictureFile: {
-                    field: 'UpdatedPictureFile',
+                updatedPicture: {
+                    field: 'UpdatedPicture',
                     defaultValue: null
                 },
                 userId: {

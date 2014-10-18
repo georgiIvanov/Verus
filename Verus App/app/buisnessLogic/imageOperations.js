@@ -16,43 +16,48 @@ define([
         createStory: function (imageData, storyName, cb) {
 
             var stories = app.data.stories;
-
+            var fileName = self.createFileName();
             var newStory = {
                 name: storyName,
-                topImageUrl: ""
+                topImageUrl: "",
+                updatedPicture: fileName
             };
 
-            stories.add(newStory);
-            stories.one('sync', function () {
-                $.publish('/newStory/added', [newStory]);
-                self.uploadFile(imageData, function (uploadedFile) {
-
+            self.uploadFile(imageData, fileName, function (success) {
+                newStory.topImageUrl = self.urlWithFileName(fileName);
+                stories.add(newStory);
+                stories.one('sync', function () {
                     var createdStory = stories.at(stories._total - 1);
-                    createdStory.set('updatedPictureFile', uploadedFile.Id);
-                    createdStory.set('topImageUrl', uploadedFile.Uri);
                     self.createPhoto(imageData, createdStory.id);
                     stories.sync();
                     cb(true);
-                });
 
+                });
+                stories.sync();
             });
-            stories.sync();
+
         },
-        uploadFile: function (data, cb) {
-            app.bes.Files.create({
-                Filename: Math.random().toString(36).substring(2, 15) + ".jpg",
-                ContentType: "image/jpeg",
-                base64: data
-            }).then(function (data) {
-                cb(data.result);
+        uploadFile: function (data, fileName, cb) {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://91.148.170.36/kusaAPI2/',
+                data: {
+                    'Filename': fileName,
+                    'base64': data
+                },
+                success: function (msg) {
+                    console.log(msg);
+                    cb(true);
+                }
             });
         },
         createPhoto: function (data, storyId) {
-            self.uploadFile(data, function (uploadedFile) {
+            var fileName = self.createFileName();
+            self.uploadFile(data, fileName, function (uploadedFile) {
                 var observablePhoto = new kendo.data.ObservableObject({
                     'Story': storyId,
-                    'PhotoFile': uploadedFile.Id,
-                    'Url': uploadedFile.Uri
+                    'Url': self.urlWithFileName(fileName)
                 });
                 var photos = app.bes.data('Photos');
                 photos.create(observablePhoto,
@@ -65,22 +70,21 @@ define([
             });
         },
         addPhotoToStory: function (imageData, story, cb) {
+            var fileName = self.createFileName();
             self.createPhoto(imageData, story.id);
+            self.uploadFile(imageData, story.updatedPicture, function(){
+                
+            });
 
-            var file = {
-                "FileName": Math.random().toString(36).substring(2, 15) + ".jpeg",
-                "base64": imageData,
-                "ContentType": 'image/jpeg',
-            };
+            
 
-
-            app.bes.Files.updateContent(story.updatedPictureFile, file,
-                function (data) {
-                    //alert(JSON.stringify(data));
-                },
-                function (error) {
-                    //alert(JSON.stringify(error));
-                });
+        },
+        urlWithFileName: function (fileName) {
+            var url = 'http://91.148.170.36/kusaAPI2/files/' + fileName;
+            return url;
+        },
+        createFileName: function(){
+            return Math.random().toString(36).substring(2, 15) + ".jpg";
         }
     };
     io.init();
