@@ -1,7 +1,8 @@
 define([
    'settings',
-    'datasources/storiesDataSource'
-], function (settings, StoriesDataSource) {
+    'datasources/storiesDataSource',
+    'datasources/photosDataSource'
+], function (settings, StoriesDataSource, PhotosDataSource) {
 
     var loadUI = function () {
         return $.Deferred(function (dfd) {
@@ -27,12 +28,13 @@ define([
                 self.instance = new kendo.mobile.Application(document.body, {
                     transition: 'slide',
                     skin: 'flat',
-                    initialView :'tabstrip-stories'
+                    initial:'tabstrip-stories'
                 });
             });
         },
         data: {
-            stories: new StoriesDataSource()
+            stories: new StoriesDataSource(),
+            photos: new PhotosDataSource()
         }
     };
     
