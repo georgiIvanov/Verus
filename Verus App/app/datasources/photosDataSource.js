@@ -38,6 +38,7 @@ define([
                 typeName: 'Photos'
             },
             serverSorting: true,
+            serverFiltering: true,
             sort: sort || {
                 field: 'CreatedAt',
                 dir: 'desc'

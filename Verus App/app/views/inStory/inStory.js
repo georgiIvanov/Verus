@@ -5,6 +5,8 @@ define([
 ], function (View, html, app) {
 
     var photos = null;
+    var self = null;
+    var shownStory = null;
     var fetched = {};
     var fetchMaybe = function (type, cb) {
         if (!fetched[type]) {
@@ -14,11 +16,19 @@ define([
             cb();
         }
     };
+    
+    var fetchFiltered = function(story){
+            app.data.photos.filter({
+                field: 'story',
+                operator: 'eq',
+                value: story.Id
+            });
+    }
 
     var model = kendo.observable({
         photos: app.data.photos,
         photoClick: function (e) {
-            var story = e.data;
+            var photo = e.data;
 
         }
     });
@@ -26,23 +36,19 @@ define([
     var events = {
         init: function (e) {
             navbar = e.view.header.find('.km-navbar').data('kendoMobileNavBar');
+            self = this;
         },
         show: function (e) {
-            //this.loader.show();
             navbar = e.view.header.find('.km-navbar').data('kendoMobileNavBar');
+            fetchFiltered(shownStory);
         },
         afterShow: function (e) {
-            var self = this;
 
         }
     };
 
     $.subscribe('/story/selected', function (e, story) {
-        
-        //self.loader.show();
-        app.data.photos.fetch(function (e) {
-
-        });
+        shownStory = story;
     });
 
     return new View('inStory', html, model, events);

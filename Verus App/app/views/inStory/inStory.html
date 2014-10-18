@@ -10,7 +10,14 @@
         </div>
     </header>
     
-    <ul data-role="listview" data-style="inset">
-       in story
+    <ul data-role="listview" data-style="inset"
+        data-bind="source: photos" data-template="photos-template">
+       
     </ul>
 </div>
+
+<script type="text/x-kendo-template" id="photos-template">
+  
+  <img class="photo-image" src=#:url#></img>
+  
+</script>
