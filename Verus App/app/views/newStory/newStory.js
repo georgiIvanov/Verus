@@ -14,8 +14,6 @@ define([
             $('#newStoryTitle').val("test story");
         },
         afterShow: function (e) {
-            var self = this;
-
 
         }
     };

@@ -5,6 +5,7 @@ define([
     'views/inStory/inStory'
 ], function (View, html, app, inStory) {
     
+    var self;
     var fetched = {};
     var fetchMaybe = function (type, cb) {
         if (!fetched[type]) {
@@ -25,16 +26,15 @@ define([
 
     var events = {
         init: function (e) {
+            self = this;
             navbar = e.view.header.find('.km-navbar').data('kendoMobileNavBar');
         },
         show: function (e) {
             this.loader.show();
         },
-        afterShow: function (e) {
-            var self = this;
-            fetchMaybe("stories", function () {
+        afterShow: function (e) {            
+            app.data["stories"].fetch(function () {
                 self.loader.hide();
-                    
             });
         }
     };

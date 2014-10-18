@@ -34,7 +34,8 @@ define([
             transport:{
                 typeName: 'Stories'
             },
-            sort: sort || { field: 'Name', dir: 'desc' },
+            serverSorting: true,
+            sort: sort || { field: 'CreatedAt', dir: 'desc' },
             filter: filter || {}
         });
         
