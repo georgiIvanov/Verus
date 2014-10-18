@@ -1,21 +1,13 @@
 define([
     'views/view',
     'text!views/inStory/inStory.html',
-    'app'
-], function (View, html, app) {
+    'app',
+    'buisnessLogic/imageOperations'
+], function (View, html, app, imageOperations) {
 
     var photos = null;
     var self = null;
     var shownStory = null;
-    var fetched = {};
-    var fetchMaybe = function (type, cb) {
-        if (!fetched[type]) {
-            fetched[type] = true;
-            app.data[type].fetch(cb);
-        } else {
-            cb();
-        }
-    };
     
     var fetchFiltered = function(story){
             app.data.photos.filter({
@@ -27,8 +19,22 @@ define([
 
     var model = kendo.observable({
         photos: app.data.photos,
-        photoClick: function (e) {
-            var photo = e.data;
+        addPhoto: function (e) {
+            var success = function (data) {
+                imageOperations.addPhotoToStory(data, shownStory, function(success){
+                    
+                });
+            };
+
+            var error = function () {
+                navigator.notification.alert("Unfortunately we could not add the image");
+            };
+
+            var config = {
+                destinationType: Camera.DestinationType.DATA_URL
+            }
+
+            navigator.camera.getPicture(success, error, config);
 
         }
     });

@@ -14,11 +14,6 @@ define([
             gif: "image/gif"
         },
         createStory: function (imageData, storyName, cb) {
-            // create updating file
-            // create story containing url for updating file
-            // create photo with id to story and its own file
-            // ???
-            // success
 
             var stories = app.data.stories;
 
@@ -68,6 +63,24 @@ define([
                         alert(JSON.stringify(error));
                     });
             });
+        },
+        addPhotoToStory: function (imageData, story, cb) {
+            self.createPhoto(imageData, story.id);
+
+            var file = {
+                "FileName": Math.random().toString(36).substring(2, 15) + ".jpeg",
+                "base64": imageData,
+                "ContentType": 'image/jpeg',
+            };
+
+
+            app.bes.Files.updateContent(story.updatedPictureFile, file,
+                function (data) {
+                    //alert(JSON.stringify(data));
+                },
+                function (error) {
+                    //alert(JSON.stringify(error));
+                });
         }
     };
     io.init();

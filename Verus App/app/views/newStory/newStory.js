@@ -36,7 +36,7 @@ define([
                 destinationType: Camera.DestinationType.DATA_URL
             }
 
-            navigator.camera.getPicture(success, error, config)
+            navigator.camera.getPicture(success, error, config);
         },
         createButtonTap: function (e) {
             var storyTitle = $('#newStoryTitle').val();
