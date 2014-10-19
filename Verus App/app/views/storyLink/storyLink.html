@@ -1,0 +1,17 @@
+<div data-role="modalview" id="storyLink" data-model="app.storyLink.model" 
+     data-init="app.storyLink.events.init" data-open="app.storyLink.events.open" style="display: none" data-width="80%">
+  <div data-role="header">
+    <div data-role="navbar">
+      <span data-role="view-title">Latest picture</span>
+      <a data-role="button" data-bind="click: close" data-align="right" data-icon="close"></a>
+    </div>
+  </div>
+  <ul data-role="listview" data-style="inset">
+    <li>
+        <textarea name="newTodo" id="newTodo" data-bind="value: text" onClick="this.setSelectionRange(0, this.value.length)">
+            
+        </textarea>
+    </li>
+  </ul>
+  <a data-bind="click: add" data-role="button" class="full">OK</a>
+</div>

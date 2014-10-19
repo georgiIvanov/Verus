@@ -7,7 +7,8 @@ define([
     var loadUI = function () {
         return $.Deferred(function (dfd) {
             require([
-               'views/tabStrip/tabStrip'
+               'views/tabStrip/tabStrip',
+               'views/storyLink/storyLink'
             ], function () {
                 dfd.resolve();
             });
