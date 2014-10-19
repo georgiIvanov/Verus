@@ -3,6 +3,7 @@ define([
 ], function (app) {
 
     var self;
+    var creatingStory = false;
     var io = {
         init: function () {
             self = this;
@@ -14,7 +15,10 @@ define([
             gif: "image/gif"
         },
         createStory: function (imageData, storyName, cb) {
-
+            if(creatingStory == true){
+                return;
+            }
+            creatingStory = true;
             var stories = app.data.stories;
             var fileName = self.createFileName();
             var newStory = {
@@ -31,7 +35,7 @@ define([
                     self.createPhoto(imageData, createdStory.id);
                     stories.sync();
                     cb(true);
-
+                    creatingStory = false;
                 });
                 stories.sync();
             });
