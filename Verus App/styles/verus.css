@@ -46,7 +46,12 @@
 
 #newStoryPhotoButton{
     font-size: 4.2em;
-    
+    margin-left: 80px;
+}
+
+#newStoryPicture{
+    margin-top:10px;
+    margin-bottom:50px;
 }
 
 
@@ -55,5 +60,5 @@
 }
 
 .big-top-margin{
-    margin-top:150px;
+    margin-top:80px;
 }

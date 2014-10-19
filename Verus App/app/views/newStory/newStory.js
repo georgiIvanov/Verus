@@ -45,7 +45,7 @@ define([
                 imageOperations.createStory(imageData, storyTitle, function(success){
                     self.loader.hide();
                     $('#newStoryPicture').replaceWith('<img src="" class="photo-image" id="newStoryPicture"/>');
-                    $('#newStoryTitle').val("waas");
+                    $('#newStoryTitle').val("");
                     imageData = null;
                 });
             }

@@ -3,6 +3,12 @@
      data-init="app.stories.events.init" data-after-show="app.stories.events.afterShow" 
      data-title="My Stories" data-layout="mobile-tabstrip">
     
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title">My Stories</span>
+        </div>
+    </header>
+    
     <ul data-role="listview" data-style="inset" id="stories-listview"
         data-bind="source: stories" data-template="stories-template">
        
