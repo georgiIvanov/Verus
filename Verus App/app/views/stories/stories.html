@@ -11,9 +11,10 @@
 
 <script type="text/x-kendo-template" id="stories-template">
   
-  <a class="fa fa-lg" data-bind="click: enterStory">
+  
   <div class="story-name"><p>#: name #</p></div>
   <img class="story-image" src=#:topImageUrl#?#= new Date().getTime()#></img>
-  
+  <a class="fa fa-lg nav-button enter-story-btn" data-bind="click: enterStory" data-role="button">
+  >
   </a>
 </script>

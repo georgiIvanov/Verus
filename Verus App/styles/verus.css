@@ -6,6 +6,7 @@
 
 .photo-image{
     max-width: 320px;
+    width: 100%;
 }
 
 .center-children
@@ -19,6 +20,10 @@
     font-family: "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 300; 
     font-size:20px;
+}
+
+.enter-story-btn{
+    top: -60px;
 }
 
 .label-text{
