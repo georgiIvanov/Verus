@@ -3,7 +3,7 @@
      data-init="app.stories.events.init" data-after-show="app.stories.events.afterShow" 
      data-title="My Stories" data-layout="mobile-tabstrip">
     
-    <ul data-role="listview" data-style="inset"
+    <ul data-role="listview" data-style="inset" id="stories-listview"
         data-bind="source: stories" data-template="stories-template">
        
     </ul>
@@ -13,7 +13,7 @@
   
   <a class="fa fa-lg" data-bind="click: enterStory">
   <div class="story-name"><p>#: name #</p></div>
-  <img class="story-image" src=#:topImageUrl#></img>
+  <img class="story-image" src=#:topImageUrl#?#= new Date().getTime()#></img>
   
   </a>
 </script>

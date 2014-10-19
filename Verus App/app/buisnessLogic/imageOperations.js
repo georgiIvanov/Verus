@@ -72,18 +72,25 @@ define([
         addPhotoToStory: function (imageData, story, cb) {
             var fileName = self.createFileName();
             self.createPhoto(imageData, story.id);
-            self.uploadFile(imageData, story.updatedPicture, function(){
-                
+            self.uploadFile(imageData, story.updatedPicture, function () {
+
+                app.data.photos.filter({
+                    field: 'story',
+                    operator: 'eq',
+                    value: story.id
+                });
+                app.data.stories.fetch();
+                cb(true);
             });
 
-            
+
 
         },
         urlWithFileName: function (fileName) {
             var url = 'http://91.148.170.36/kusaAPI2/files/' + fileName;
             return url;
         },
-        createFileName: function(){
+        createFileName: function () {
             return Math.random().toString(36).substring(2, 15) + ".jpg";
         }
     };

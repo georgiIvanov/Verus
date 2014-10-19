@@ -8,20 +8,20 @@ define([
     var photos = null;
     var self = null;
     var shownStory = null;
-    
-    var fetchFiltered = function(story){
-            app.data.photos.filter({
-                field: 'story',
-                operator: 'eq',
-                value: story.Id
-            });
+
+    var fetchFiltered = function (story) {
+        app.data.photos.filter({
+            field: 'story',
+            operator: 'eq',
+            value: story.Id
+        });
     }
 
     var model = kendo.observable({
         photos: app.data.photos,
         addPhoto: function (e) {
             var success = function (data) {
-                imageOperations.addPhotoToStory(data, shownStory, function(success){
+                imageOperations.addPhotoToStory(data, shownStory, function (success) {
                     
                 });
             };

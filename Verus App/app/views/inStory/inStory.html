@@ -5,19 +5,20 @@
     
     <header data-role="header">
         <div data-role="navbar">
-            <span data-role="view-title">!!!</span>
+            <span data-role="view-title" id="instory-title">!!!</span>
             <a data-align="right" data-role="button" class="nav-button" data-bind="click:addPhoto">Add</a>
         </div>
     </header>
     
-    <ul data-role="listview" data-style="inset"
-        data-bind="source: photos" data-template="photos-template">
+    <ul data-role="listview" data-style="inset" id="in-story-listview"
+        data-bind="source: photos" data-template="photos-template"
+         data-pull-to-refresh="true">
        
     </ul>
 </div>
 
 <script type="text/x-kendo-template" id="photos-template">
   
-  <img class="photo-image" src=#:url#></img>
+  <img class="photo-image" src=#:url#?#= new Date().getTime()#></img>
   
 </script>
