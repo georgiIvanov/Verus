@@ -5,7 +5,7 @@
     
     <header data-role="header">
         <div data-role="navbar">
-            <span data-role="view-title" id="instory-title">!!!</span>
+            <span data-role="view-title" id="instory-title" data-bind="value: storyTitle">!!!</span>
             <a data-align="right" data-role="button" class="nav-button" data-bind="click:addPhoto">Add</a>
         </div>
     </header>
@@ -20,5 +20,9 @@
 <script type="text/x-kendo-template" id="photos-template">
   
   <img class="photo-image" src=#:url#?#= new Date().getTime()#></img>
-  
+
+  <ul data-role="listview" >
+  <li><input type="text" onClick="this.setSelectionRange(0, this.value.length)" value=#:url# /></li>
+  </ul>
+ 
 </script>

@@ -19,6 +19,7 @@ define([
 
     var model = kendo.observable({
         photos: app.data.photos,
+        storyTitle: null,
         addPhoto: function (e) {
             var success = function (data) {
                 imageOperations.addPhotoToStory(data, shownStory, function (success) {
@@ -41,15 +42,15 @@ define([
 
     var events = {
         init: function (e) {
-            navbar = e.view.header.find('.km-navbar').data('kendoMobileNavBar');
             self = this;
         },
         show: function (e) {
             navbar = e.view.header.find('.km-navbar').data('kendoMobileNavBar');
+            navbar.title(shownStory.name);
             fetchFiltered(shownStory);
         },
         afterShow: function (e) {
-
+            
         }
     };
 
